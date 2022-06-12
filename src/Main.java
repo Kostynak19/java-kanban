@@ -21,11 +21,11 @@ public class Main {
         System.out.println("Печатаем содержание 2х задач");
         System.out.println(createdTask);
         System.out.println(createdTask1);
-        if (!task.equals(createdTask) && !createdTask.equals(createdTask1))
+        if (!task.equals(createdTask) && !createdTask.equals(createdTask1)) {
             System.out.println("Метод createTask(task) работает штатно");
-        else
+        } else {
             System.out.println("Метод createTask(task) работает неправильно");
-
+        }
         System.out.println("Метод findAllTask(). Начинаем тестирование.");
         List<Task> taskArrayList = taskManager.findAllTasks();
         System.out.println("Метод findAllTask(). Печатаем весь список задач:");
@@ -99,7 +99,7 @@ public class Main {
         final SubTask subTask4 = taskManager.createSubTask(subTask, createdEpic1);
         System.out.println(subTask3);
         System.out.println(subTask4);
-        if (subTask1.getEpicID().equals(subTask2.getEpicID()) && subTask3.getEpicID().equals(subTask4.getEpicID()))
+        if (subTask1.getEpicId().equals(subTask2.getEpicId()) && subTask3.getEpicId().equals(subTask4.getEpicId()))
             System.out.println("Метод createSubTask(subtask, epic) работает штатно");
         else
             System.out.println("Метод createSubTask(subtask, epic) работает неправильно");

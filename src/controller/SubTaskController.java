@@ -22,7 +22,7 @@ public class SubTaskController {
         final SubTask newSubTask = new SubTask(subTask.getName(), subTask.getDescription(), ++counterIDSubTasks, epic.getId());
         if (!subTasks.containsKey(newSubTask.getId())) {
             subTasks.put(newSubTask.getId(), newSubTask);
-            epicManager.epics.get(epic.getId()).getSubTasks().add(/*newSubTask.getId(),*/ newSubTask);
+            epicManager.epics.get(epic.getId()).getSubTasks().add(newSubTask);
         } else {
             System.out.println("Задача с таким ID уже существует");
             return null;
@@ -45,8 +45,8 @@ public class SubTaskController {
         originalTask.setDescription(task.getDescription());
         originalTask.setName(task.getName());
         originalTask.setStatus(task.getStatus());
-        epicManager.epics.get(task.getEpicID()).getSubTasks().remove(originalTask);
-        epicManager.epics.get(task.getEpicID()).getSubTasks().add(task);
+        epicManager.epics.get(task.getEpicId()).getSubTasks().remove(originalTask);
+        epicManager.epics.get(task.getEpicId()).getSubTasks().add(task);
         refreshStatus(task);
         return originalTask;
     }
@@ -54,7 +54,7 @@ public class SubTaskController {
     // Удаление задачи по идентификатору.
     public SubTask deleteById(Integer id) {
         final SubTask deletedTask = subTasks.get(id);
-        epicManager.epics.get(deletedTask.getEpicID()).getSubTasks().remove(deletedTask);
+        epicManager.epics.get(deletedTask.getEpicId()).getSubTasks().remove(deletedTask);
         subTasks.remove(id);
         return deletedTask;
     }
@@ -71,7 +71,7 @@ public class SubTaskController {
 
     // Обновление статуса эпика в зависимости от статуса подзадач
     public void refreshStatus(SubTask task) {
-        ArrayList<SubTask> subTasksOfEpic = epicManager.epics.get(task.getEpicID()).getSubTasks();
+        ArrayList<SubTask> subTasksOfEpic = epicManager.epics.get(task.getEpicId()).getSubTasks();
         int counterNew = 0;
         int counterDone = 0;
         for (SubTask subTask : subTasksOfEpic) {
@@ -82,11 +82,11 @@ public class SubTaskController {
             }
         }
         if (counterNew == subTasksOfEpic.size()) {
-            epicManager.epics.get(task.getEpicID()).setStatus(Status.NEW);
+            epicManager.epics.get(task.getEpicId()).setStatus(Status.NEW);
         } else if (counterDone == subTasksOfEpic.size()) {
-            epicManager.epics.get(task.getEpicID()).setStatus(Status.DONE);
+            epicManager.epics.get(task.getEpicId()).setStatus(Status.DONE);
         } else {
-            epicManager.epics.get(task.getEpicID()).setStatus(Status.IN_PROGRESS);
+            epicManager.epics.get(task.getEpicId()).setStatus(Status.IN_PROGRESS);
         }
     }
 }

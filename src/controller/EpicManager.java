@@ -8,7 +8,7 @@ import java.util.HashMap;
 // Класс EpicManager содержит список методов для задач типа "эпик";
 public class EpicManager {
     HashMap<Integer, Epic> epics = new HashMap<>();
-    Integer counterIDEpics = 0;
+    Integer counterEpic = 0;
 
     // Получение эпика по ID
     public Epic findById(Integer id) {
@@ -34,7 +34,7 @@ public class EpicManager {
 
     //    Создание нового эпика
     public Epic create(Epic task) {
-        final Epic newTask = new Epic(task.getName(), task.getDescription(), ++counterIDEpics);
+        final Epic newTask = new Epic(task.getName(), task.getDescription(), ++counterEpic);
         if (!epics.containsKey(newTask.getId())) {
             epics.put(newTask.getId(), newTask);
         } else {

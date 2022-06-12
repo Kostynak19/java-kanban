@@ -4,19 +4,19 @@ import java.util.Objects;
 
 // Класс SubTask описывает сущность задачи типа "подзадача"
 public class SubTask extends Task {
-    private Integer epicID;
+    private Integer epicId;
 
-    public SubTask(String name, String description, Integer id, Integer epicID) {
+    public SubTask(String name, String description, Integer id, Integer epicId) {
         super(name, description, id);
-        this.epicID = epicID;
+        this.epicId = epicId;
     }
 
-    public Integer getEpicID() {
-        return epicID;
+    public Integer getEpicId() {
+        return epicId;
     }
 
-    public void setEpicID(Integer epicID) {
-        this.epicID = epicID;
+    public void setEpicId(Integer epicId) {
+        this.epicId = epicId;
     }
 
     @Override
@@ -25,18 +25,18 @@ public class SubTask extends Task {
         if (!(o instanceof SubTask)) return false;
         if (!super.equals(o)) return false;
         SubTask subTask = (SubTask) o;
-        return Objects.equals(getEpicID(), subTask.getEpicID());
+        return Objects.equals(getEpicId(), subTask.getEpicId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getEpicID());
+        return Objects.hash(super.hashCode(), getEpicId());
     }
 
     @Override
     public String toString() {
         return "SubTask{" +
-                "epicID=" + epicID +
+                "epicID=" + epicId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
