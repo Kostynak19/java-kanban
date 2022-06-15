@@ -1,7 +1,8 @@
 package controller;
 
+import manager.EpicManager;
 import model.Epic;
-import model.Status;
+import enums.Status;
 import model.SubTask;
 
 import java.util.ArrayList;

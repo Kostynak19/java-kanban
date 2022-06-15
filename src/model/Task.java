@@ -1,8 +1,10 @@
 package model;
 
+import enums.Status;
+
 import java.util.Objects;
 
-import static model.Status.NEW;
+import static enums.Status.NEW;
 
 // Класс Task описывает сущность задачи типа "задача"
 public class Task {

@@ -1,7 +1,7 @@
-import controller.Managers;
-import controller.TaskManager;
+import manager.Managers;
+import manager.TaskManager;
 import model.Epic;
-import model.Status;
+import enums.Status;
 import model.SubTask;
 import model.Task;
 
@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Пришло время практики!");
         System.out.println("Начинаем тестирование бэк-а");
         final TaskManager taskManager = Managers.getDefault();
 
@@ -134,10 +133,10 @@ public class Main {
         System.out.println(taskManager.findAllSubTasksOfEpic(taskManager.findEpicById(2)));
 
         System.out.println("Метод findEpic(epic). Начинаем тестирование.");
-        Epic findedEpic = taskManager.findEpicById(1);
+        Epic fundedEpic = taskManager.findEpicById(1);
         System.out.println("Печатаем найденный эпик");
-        System.out.println(findedEpic);
-        if (1 == findedEpic.getId()) {
+        System.out.println(fundedEpic);
+        if (1 == fundedEpic.getId()) {
             System.out.println("Метод createEpic(epic) работает штатно");
         } else {
             System.out.println("Метод createEpic(epic) не работает");

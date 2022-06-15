@@ -1,4 +1,4 @@
-package controller;
+package manager;
 
 import model.Epic;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 // Класс EpicManager содержит список методов для задач типа "эпик";
 public class EpicManager {
-    HashMap<Integer, Epic> epics = new HashMap<>();
+    public HashMap<Integer, Epic> epics = new HashMap<>();
     Integer counterEpic = 0;
 
     // Получение эпика по ID
