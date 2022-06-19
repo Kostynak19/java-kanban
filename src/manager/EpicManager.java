@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 // Класс EpicManager содержит список методов для задач типа "эпик";
 public class EpicManager {
-    public HashMap<Integer, Epic> epics = new HashMap<>();
+    private HashMap<Integer, Epic> epics = new HashMap<>();
     Integer counterEpic = 0;
 
     // Получение эпика по ID

@@ -7,8 +7,12 @@ import java.util.HashMap;
 
 // Класс TaskManager содержит список методов для задач типа "задача";
 public class TaskController {
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
-    private Integer counterTask = 0;
+    public HashMap<Integer, Task> getTasks() {
+        return tasks;
+    }
+
+    private HashMap<Integer, Task> tasks = new HashMap<>();
+    private Integer counterIDTasks = 0;
 
     // Получение списка всех задач
     public ArrayList<Task> findAll() {
@@ -35,7 +39,7 @@ public class TaskController {
 
     //    Создание новой задачи
     public Task create(Task task) {
-        final Task newTask = new Task(task.getName(), task.getDescription(), ++counterTask);
+        final Task newTask = new Task(task.getName(), task.getDescription(), ++counterIDTasks);
         if (!tasks.containsKey(newTask.getId()))
             tasks.put(newTask.getId(), newTask);
         else {
