@@ -8,7 +8,7 @@ import model.SubTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// Класс SubTaskManager содержит список CRUD методов для задач типа "подзадача";
+// Класс SubTaskManager содержит список методов для задач типа "подзадача";
 public class SubTaskController {
     private Integer counterIDSubTasks = 0;
     private HashMap<Integer, SubTask> subTasks = new HashMap<>();
