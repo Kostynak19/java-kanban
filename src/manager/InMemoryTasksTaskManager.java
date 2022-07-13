@@ -15,7 +15,7 @@ public class InMemoryTasksTaskManager implements TaskManager {
     TaskController taskController = new TaskController();
     EpicManager epicManager = new EpicManager();
     SubTaskController subTaskController = new SubTaskController(epicManager);
-    HistoryManager inMemoryHistoryManager = Managers.getDefaultHistory();
+    InMemoryHistoryManager inMemoryHistoryManager = new InMemoryHistoryManager();
 
     //    Получение списка всех задач.
     @Override

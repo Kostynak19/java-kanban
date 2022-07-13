@@ -2,7 +2,6 @@ package manager;
 
 import model.Task;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface HistoryManager {
@@ -17,5 +16,4 @@ public interface HistoryManager {
 
     // Получение истории.
     List<Task> getHistory();
-    HashMap<Integer, InMemoryHistoryManager.Node> getMap();
 }
