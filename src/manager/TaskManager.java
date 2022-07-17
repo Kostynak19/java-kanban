@@ -3,120 +3,74 @@ package manager;
 import model.Epic;
 import model.SubTask;
 import model.Task;
+
 import java.util.List;
 
-
-//
-
 public interface TaskManager {
-
+    
     //    Получение списка всех задач.
-
-    List<Task> findAllTasks();
-
-
+    List<Task> findAllTasks ();
+    
     //    Получение списка всех эпиков.
-
-    List<Epic> findAllEpics();
-
-
+    List<Epic> findAllEpics ();
+    
     // Получение списка всех подзадач определённого эпика.
-
-    List<SubTask> findAllSubTasksOfEpic(Epic epic);
-
-
+    List<SubTask> findAllSubTasksOfEpic (Epic epic);
+    
     // Получение подзадачи по идентификатору
-
-    SubTask findSubTaskById(Integer id);
-
-
+    SubTask findSubTaskById (Integer id);
+    
     // Получение задачи по идентификатору
-
-    Task findTaskById(Integer id);
-
-
+    Task findTaskById (Integer id);
+    
     // Получение эпика по идентификатору
-
-    Epic findEpicById(Integer id);
-
-
+    Epic findEpicById (Integer id);
+    
     // Добавление задачи.
-
-    Task createTask(Task task);
-
-
+    Task createTask (Task task);
+    
     // Добавление подзадачи.
-
-    SubTask createSubTask(SubTask subTask, Epic epic);
-
-
+    SubTask createSubTask (SubTask subTask, Epic epic);
+    
     // Добавление Эпика.
-
-    Epic createEpic(Epic epic);
-
-
+    Epic createEpic (Epic epic);
+    
     // Обновление задачи.
-
-    Task updateTaskByID(Task task);
-
-
+    Task updateTaskByID (Task task);
+    
     // Обновление подзадачи.
-
-    SubTask updateSubTaskByID(SubTask subTask);
-
-
+    SubTask updateSubTaskByID (SubTask subTask);
+    
     // Обновление эпика.
-
-    Task updateEpicByID(Epic epic);
-
-
+    Task updateEpicByID (Epic epic);
+    
     // Удаление всех задач.
-
-    void deleteAllTask();
-
-
+    void deleteAllTask ();
+    
     // Удаление всех подзадач.
-
-    void deleteAllSubTasks();
-
-
+    void deleteAllSubTasks ();
+    
     // Удаление всех эпиков.
-
-    void deleteAllEpics();
-
-
+    void deleteAllEpics ();
+    
     // Удаление подзадач по ID.
-
-    void deleteSubTaskById(Integer id);
-
-
+    void deleteSubTaskById (Integer id);
+    
     // Удаление эпика по ID.
-
-    void deleteEpicById(Integer id);
-
-
+    void deleteEpicById (Integer id);
+    
     // Удаление задачи по ID.
-
-    Task deleteTaskById(Integer id);
-
-
+    void deleteTaskById (Integer id);
+    
     // Удаление задачи из истории по ИД.
-
-    void removeFromHistoryById(int id);
-
-
+    void removeFromHistoryById (int id);
+    
     // Получение истории.
-
-    List<Task> getHistory();
-
-
+    List<Task> getHistory ();
+    
     // Добавление задачи в историю.
-
-    void addInHistory(Task task);
-
-
+    void addInHistory (Task task);
+    
     // Удаление всей истории.
-
-    void removeAllHistory();
-
+    void removeAllHistory ();
 }
