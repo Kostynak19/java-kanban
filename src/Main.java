@@ -8,7 +8,7 @@ import model.Task;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         System.out.println("Пришло время практики!");
         System.out.println("Начинаем тестирование бэк-а");
         final TaskManager taskManager = Managers.getDefault();
@@ -67,7 +67,7 @@ public class Main {
 */
         
         System.out.println("Метод updateTaskById(). Начинаем тестирование.");
-        final Task createdTask2 = taskManager.updateTaskByID(createdTask1);
+        final Task createdTask2 = taskManager.updateTaskById(createdTask1);
         System.out.println("Печатам переданную в метод и обновленную задачу:");
         System.out.println(createdTask1);
         System.out.println(createdTask2);
@@ -129,7 +129,7 @@ public class Main {
         System.out.println("Печатаем задачу до обновления");
         System.out.println(subTask1);
         subTaskNew.setStatus(Status.DONE);
-        taskManager.updateSubTaskByID(subTaskNew);
+        taskManager.updateSubTaskById(subTaskNew);
         System.out.println("Печатаем задачу после обновления");
         System.out.println(subTaskNew);
         System.out.println("Проверяем статус эпика");
@@ -144,8 +144,8 @@ public class Main {
         SubTask subTask6 = new SubTask("Подзадача6", "d2223s", 4, 2);
         subTask5.setStatus(Status.DONE);
         subTask6.setStatus(Status.DONE);
-        taskManager.updateSubTaskByID(subTask5);
-        taskManager.updateSubTaskByID(subTask6);
+        taskManager.updateSubTaskById(subTask5);
+        taskManager.updateSubTaskById(subTask6);
         System.out.println(listEpics);
         System.out.println(taskManager.findEpicById(2));
         System.out.println(taskManager.findAllSubTasksOfEpic(taskManager.findEpicById(2)));
@@ -168,13 +168,13 @@ public class Main {
         epic1 = taskManager.findEpicById(1);
         epic1 = taskManager.findEpicById(1);
         if (taskManager.getHistory().size() == 2) {
-            System.out.println("история работает. Количество задач: " +  taskManager.getHistory().size());
+            System.out.println("история работает. Количество задач: " + taskManager.getHistory().size());
         } else {
-            System.out.println("история швах. Количество задач: " +  taskManager.getHistory().size());
+            System.out.println("история швах. Количество задач: " + taskManager.getHistory().size());
         }
         System.out.println("печатаем историю эпиков");
         List<Task> epics = taskManager.getHistory();
-        for (var e: epics) {
+        for (var e : epics) {
             System.out.println(e);
         }
     }

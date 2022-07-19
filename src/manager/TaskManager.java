@@ -36,13 +36,13 @@ public interface TaskManager {
     Epic createEpic (Epic epic);
     
     // Обновление задачи.
-    Task updateTaskByID (Task task);
+    Task updateTaskById (Task task);
     
     // Обновление подзадачи.
-    SubTask updateSubTaskByID (SubTask subTask);
+    SubTask updateSubTaskById (SubTask subTask);
     
     // Обновление эпика.
-    Task updateEpicByID (Epic epic);
+    Task updateEpicById (Epic epic);
     
     // Удаление всех задач.
     void deleteAllTask ();
@@ -56,9 +56,6 @@ public interface TaskManager {
     // Удаление подзадач по ID.
     void deleteSubTaskById (Integer id);
     
-    // Удаление эпика по ID.
-    void deleteEpicById (Integer id);
-    
     // Удаление задачи по ID.
     void deleteTaskById (Integer id);
     
@@ -70,7 +67,4 @@ public interface TaskManager {
     
     // Добавление задачи в историю.
     void addInHistory (Task task);
-    
-    // Удаление всей истории.
-    void removeAllHistory ();
 }

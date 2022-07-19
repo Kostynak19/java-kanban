@@ -8,28 +8,20 @@ import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     
-    protected static class Node {
+    private static class Node {
         
         private Task task;
         private Node prev;
         private Node next;
         private Node (Task task) {
-        //    this.next = next;
             this.task = task;
-          //  this.prev = prev;
             
-        }
-        public Task getTask (){
-            return task;
         }
     }
     private Node head;
     private Node tail;
     private HashMap<Integer, Node> map = new HashMap<>();
-    public HashMap<Integer, Node> getMap () {
-        return map;
-    }
-
+    
     @Override
     public void add (Task task) {
         if (task == null) {
@@ -56,19 +48,15 @@ public class InMemoryHistoryManager implements HistoryManager {
             if (oldNode == head) {
                 head = oldNode.next;
                 tail = oldNode.next;
+                oldNode.prev = null;
             } else if (oldNode == tail) {
                 tail = oldNode.prev;
                 tail.next = null;
             } else {
                 oldNode.prev.next = oldNode.next;
+                oldNode.next.prev = null;
             }
         }
-    }
-    @Override
-    public void removeAll () {
-        Node head = null;
-        Node tail = null;
-        HashMap<Integer, Node> map = new HashMap<>();
     }
     @Override
     public List<Task> getHistory () {

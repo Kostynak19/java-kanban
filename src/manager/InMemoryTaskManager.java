@@ -13,23 +13,19 @@ import java.util.List;
 // Класс controller.InMemoryTaskManager содержит список методов для всех типов задач.
 public class InMemoryTaskManager implements TaskManager {
     
-    Integer counterEpic = 0;
-    HistoryManager inMemoryHistoryManager = Managers.getDefaultHistory();
-    private HashMap<Integer, Epic> epics = new HashMap<>();
+    private Integer counterEpic = 0;
+    private final HistoryManager inMemoryHistoryManager = Managers.getDefaultHistory();
+    private final HashMap<Integer, Epic> epics = new HashMap<>();
     private Integer counterIDSubTasks = 0;
-    private HashMap<Integer, SubTask> subTasks = new HashMap<>();
-    private HashMap<Integer, Task> tasks = new HashMap<>();
+    private final HashMap<Integer, SubTask> subTasks = new HashMap<>();
+    private final HashMap<Integer, Task> tasks = new HashMap<>();
     private Integer counterIDTasks = 0;
+   
     // Получение истории.
     public List<Task> getHistory () {
         return inMemoryHistoryManager.getHistory();
     }
-    
-    // Удаление всей истории.
-    public void removeAllHistory () {
-        inMemoryHistoryManager.removeAll();
-    }
-    
+
     // Добавление задачи в историю.
     public void addInHistory (Task task) {
         inMemoryHistoryManager.add(task);
@@ -53,7 +49,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
     
     // Обновление эпика по ID
-    public Epic updateEpicByID (Epic epic) {
+    public Epic updateEpicById (Epic epic) {
         final Epic originalTask = epics.get(epic.getId());
         if (originalTask == null) {
             System.out.println("Задачи с таким ID не существует.");
@@ -76,10 +72,6 @@ public class InMemoryTaskManager implements TaskManager {
         return newTask;
     }
     
-    // Удаление эпика по идентификатору.
-    public void deleteEpicById (Integer id) {
-        epics.remove(id);
-    }
     
     // Удаление всех эпиков.
     public void deleteAllEpics () {
@@ -107,7 +99,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
     
     // Обновление подзадачи по ID
-    public SubTask updateSubTaskByID (SubTask task) {
+    public SubTask updateSubTaskById (SubTask task) {
         final SubTask originalTask = subTasks.get(task.getId());
         if (originalTask == null) {
             System.out.println("Задачи с таким ID не существует.");
@@ -191,7 +183,7 @@ public class InMemoryTaskManager implements TaskManager {
     
     
     // Обновление задачи по ID
-    public Task updateTaskByID (Task task) {
+    public Task updateTaskById (Task task) {
         final Task originalTask = tasks.get(task.getId());
         if (originalTask == null) {
             System.out.println("Задачи с таким ID не существует.");
@@ -214,23 +206,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteAllTask () {
         // Если удаляемые задачи присутствуют в истории, то очищаем и их.
-        if (!inMemoryHistoryManager.getMap().isEmpty()) {
             for (var taskKey : this.getTasks().keySet()) {
-                if (inMemoryHistoryManager.getMap().containsKey(taskKey)) {
-                    Task task = inMemoryHistoryManager.getMap().get(taskKey).getTask();
-                    inMemoryHistoryManager.remove(task.getId());
-                }
+                    inMemoryHistoryManager.remove(taskKey);
             }
-        }
-//        if (!inMemoryHistoryManager.getMap().isEmpty()) {
-//            for (var historyTask : inMemoryHistoryManager.getMap().values()) {
-//                for (var task : this.getTasks().values()) {
-//                    if (task.equals(historyTask.getTask())) {
-//                        inMemoryHistoryManager.remove(historyTask.getTask().getId());
-//                    }
-//                }
-//            }
-//        }
         tasks.clear();
     }
 }

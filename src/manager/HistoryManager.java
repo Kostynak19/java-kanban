@@ -13,13 +13,9 @@ public interface HistoryManager {
     // Удаление задачи из истории.
     void remove (int id);
     
-    // Удаление всей истории.
-    void removeAll ();
     
     // Получение истории.
     List<Task> getHistory ();
-    
-    HashMap <Integer, InMemoryHistoryManager.Node> getMap();
     
 }
 

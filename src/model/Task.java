@@ -24,10 +24,6 @@ public class Task {
         this.status = NEW;
     }
     
-    public Task (String name, Integer id) {
-        this(name, "", id, NEW);
-    }
-    
     public Task (String name, String description, Integer id, Status status) {
         this.name = name;
         this.description = description;
