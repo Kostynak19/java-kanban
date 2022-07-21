@@ -15,13 +15,11 @@ public class InMemoryHistoryManager implements HistoryManager {
         private Node next;
         private Node (Task task) {
             this.task = task;
-            
         }
     }
+    private final HashMap<Integer, Node> map = new HashMap<>();
     private Node head;
     private Node tail;
-    private HashMap<Integer, Node> map = new HashMap<>();
-    
     @Override
     public void add (Task task) {
         if (task == null) {
@@ -47,14 +45,17 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (oldNode != null) {
             if (oldNode == head) {
                 head = oldNode.next;
-                tail = oldNode.next;
-                oldNode.prev = null;
+                if (head != null) {
+                    head.prev = null;
+                }
             } else if (oldNode == tail) {
                 tail = oldNode.prev;
-                tail.next = null;
+                if (tail != null) {
+                    tail.next = null;
+                }
             } else {
                 oldNode.prev.next = oldNode.next;
-                oldNode.next.prev = null;
+                oldNode.next.prev = oldNode.prev;
             }
         }
     }
@@ -68,6 +69,5 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
         return tasks;
     }
-
 }
 

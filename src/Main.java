@@ -43,11 +43,11 @@ public class Main {
         taskManager.findTaskById(2);
         System.out.println("Печатаем найденную задачу");
         System.out.println(foundTask);
-        if (foundTask.getId() != null)
+        if (foundTask.getId() != null) {
             System.out.println("Метод findById() работает");
-        else
+        } else {
             System.out.println("Метод findById() задачу не нашел");
-        
+        }
         System.out.println("печатаем историю задач");
         List<Task> tasks = taskManager.getHistory();
         for (var t : tasks) {
@@ -71,20 +71,20 @@ public class Main {
         System.out.println("Печатам переданную в метод и обновленную задачу:");
         System.out.println(createdTask1);
         System.out.println(createdTask2);
-        if (createdTask2.equals(createdTask1))
+        if (createdTask2.equals(createdTask1)) {
             System.out.println("Метод updateTaskById() работает");
-        else
+        } else {
             System.out.println("Метод updateTaskById() не работает");
-        
+        }
         System.out.println("Метод deleteTaskById(). Начинаем тестирование.");
         System.out.println("Печатам удаляемую задачу:");
         System.out.println(taskManager.findTaskById(1));
         taskManager.deleteTaskById(1);
-        if (taskManager.findTaskById(1) == null)
+        if (taskManager.findTaskById(1) == null) {
             System.out.println("Задача удалена. Метод deleteTaskById() работает правильно.");
-        else
+        } else {
             System.out.println("Метод deleteTaskById() не работает");
-        
+        }
         System.out.println("Метод deleteAllTask(). Начинаем тестирование.");
         taskManager.deleteAllTask();
         if (taskManager.findAllTasks().isEmpty()) {
@@ -101,11 +101,11 @@ public class Main {
         System.out.println("Печатаем содержание 2х задач");
         System.out.println(createdEpic);
         System.out.println(createdEpic1);
-        if (!epic.equals(createdEpic) && !createdEpic.equals(createdEpic1))
+        if (!epic.equals(createdEpic) && !createdEpic.equals(createdEpic1)) {
             System.out.println("Метод createEpic(task) работает штатно");
-        else
+        } else {
             System.out.println("Метод createEpic(task) работает неправильно");
-        
+        }
         System.out.println("Метод createSubTask(subtask, epic). Начинаем тестирование.");
         final SubTask subTask = new SubTask("Подзадача", "Описание", -1, 1);
         System.out.println("Создаем и печатаем 2 подзадачи одного эпика");
