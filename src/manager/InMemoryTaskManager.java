@@ -15,12 +15,14 @@ public class InMemoryTaskManager implements TaskManager {
     
     private Integer counterEpic = 0;
     private final HistoryManager inMemoryHistoryManager = Managers.getDefaultHistory();
-    private final HashMap<Integer, Epic> epics = new HashMap<>();
+    protected static final HashMap<Integer, Epic> epics = new HashMap<>();
     private Integer counterIDSubTasks = 0;
-    private final HashMap<Integer, SubTask> subTasks = new HashMap<>();
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
+    protected static final HashMap<Integer, SubTask> subTasks = new HashMap<>();
+    protected static final HashMap<Integer, Task> tasks = new HashMap<>();
     private Integer counterIDTasks = 0;
-   
+    
+    public void deleteEpicById (Integer id) {
+    }
     // Получение истории.
     public List<Task> getHistory () {
         return inMemoryHistoryManager.getHistory();
@@ -121,6 +123,10 @@ public class InMemoryTaskManager implements TaskManager {
         this.findEpicById(subTaskToDelete.getEpicId()).getSubTasks().remove(subTaskToDelete);
         subTasks.remove(id);
     }
+    @Override
+    public Task deleteTaskById (Integer id) {
+        return null;
+    }
     
     // Удаление всех задач.
     public void deleteAllSubTasks () {
@@ -195,12 +201,6 @@ public class InMemoryTaskManager implements TaskManager {
         return originalTask;
     }
     
-    
-    // Удаление задачи по идентификатору.
-    public void deleteTaskById (Integer id) {
-        removeFromHistoryById(id);
-        tasks.remove(id);
-    }
     
     // Удаление всех задач.
     @Override

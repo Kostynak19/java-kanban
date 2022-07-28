@@ -1,26 +1,33 @@
 package model;
 
+import enums.Status;
+
 import java.util.Objects;
 
 // Класс SubTask описывает сущность задачи типа "подзадача"
 public class SubTask extends Task {
-    private Integer epicId;
+    private Integer epicID;
     
-    public SubTask (String name, String description, Integer id, Integer epicId) {
+    public SubTask(String type, String name, String description, Integer id, Status status, Integer epicId) {
+        super(type, name, description, id, status);
+        this.epicID = epicId;
+    }
+    
+    public SubTask(String name, String description, Integer id, Integer epicID) {
         super(name, description, id);
-        this.epicId = epicId;
+        this.epicID = epicID;
     }
     
     public Integer getEpicId () {
-        return epicId;
+        return epicID;
     }
     
-    public void setEpicId (Integer epicId) {
-        this.epicId = epicId;
+    public void setEpicID(Integer epicID) {
+        this.epicID = epicID;
     }
     
     @Override
-    public boolean equals (Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SubTask)) return false;
         if (!super.equals(o)) return false;
@@ -29,18 +36,17 @@ public class SubTask extends Task {
     }
     
     @Override
-    public int hashCode () {
+    public int hashCode() {
         return Objects.hash(super.hashCode(), getEpicId());
     }
     
     @Override
-    public String toString () {
-        return "SubTask{" +
-         "epicID=" + epicId +
-         ", name='" + name + '\'' +
-         ", description='" + description + '\'' +
-         ", id=" + id +
-         ", status='" + status + '\'' +
-         '}';
+    public String toString() {
+        return          type +
+         ", " + name +
+         ", " + description +
+         ", " + id +
+         ", " + status +
+         ", " + epicID;
     }
 }

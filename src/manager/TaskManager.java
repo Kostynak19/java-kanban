@@ -57,7 +57,7 @@ public interface TaskManager {
     void deleteSubTaskById (Integer id);
     
     // Удаление задачи по ID.
-    void deleteTaskById (Integer id);
+    Task deleteTaskById (Integer id);
     
     // Удаление задачи из истории по ИД.
     void removeFromHistoryById (int id);
