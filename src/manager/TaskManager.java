@@ -5,6 +5,7 @@ import model.SubTask;
 import model.Task;
 
 import java.util.List;
+import java.util.Set;
 
 public interface TaskManager {
     
@@ -61,10 +62,13 @@ public interface TaskManager {
     
     // Удаление задачи из истории по ИД.
     void removeFromHistoryById (int id);
+    void removeAllHistory();
     
     // Получение истории.
     List<Task> getHistory ();
     
     // Добавление задачи в историю.
     void addInHistory (Task task);
+    
+    Set<Task> getPrioritizedTasks();
 }

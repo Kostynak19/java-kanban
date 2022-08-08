@@ -1,15 +1,17 @@
 package model;
 
 import enums.Status;
+import enums.TaskTypes;
 
 import java.util.Objects;
 
 // Класс SubTask описывает сущность задачи типа "подзадача"
 public class SubTask extends Task {
+    private final String type = TaskTypes.SUBTASK.toString();
     private Integer epicID;
     
-    public SubTask(String type, String name, String description, Integer id, Status status, Integer epicId) {
-        super(type, name, description, id, status);
+    public SubTask(String name, String description, Integer id, Status status, Integer epicId) {
+        super(name, description, id, status);
         this.epicID = epicId;
     }
     

@@ -6,11 +6,10 @@ import model.Epic;
 import model.SubTask;
 import model.Task;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
-// Класс controller.InMemoryTaskManager содержит список методов для всех типов задач.
+// Класс InMemoryTaskManager содержит список методов для всех типов задач.
 public class InMemoryTaskManager implements TaskManager {
     
     private Integer counterEpic = 0;
@@ -20,6 +19,14 @@ public class InMemoryTaskManager implements TaskManager {
     protected static final HashMap<Integer, SubTask> subTasks = new HashMap<>();
     protected static final HashMap<Integer, Task> tasks = new HashMap<>();
     private Integer counterIDTasks = 0;
+    
+    private static Set<Task> prioritizedTasks =
+     new TreeSet<>(Comparator.<Task, LocalDateTime>comparing(
+       t -> t.getStartTime(),
+       Comparator.nullsLast(Comparator.naturalOrder())
+      )
+      .thenComparingInt(Task::getId));
+    
     
     public void deleteEpicById (Integer id) {
     }
@@ -210,5 +217,14 @@ public class InMemoryTaskManager implements TaskManager {
                     inMemoryHistoryManager.remove(taskKey);
             }
         tasks.clear();
+    }
+    
+    public void removeAllHistory() {
+        inMemoryHistoryManager.removeAll();
+    }
+    
+    @Override
+    public Set<Task> getPrioritizedTasks() {
+        return prioritizedTasks;
     }
 }

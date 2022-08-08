@@ -1,15 +1,20 @@
 package model;
 
 import enums.Status;
+import enums.TaskTypes;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 // Класс Epic описывает сущность задачи типа "эпик"
 public class Epic extends Task {
-    final ArrayList<SubTask> subTasks = new ArrayList<>();
+  
+    private final String type = TaskTypes.EPIC.toString();
+    ArrayList<SubTask> subTasks = new ArrayList<>();
     
-    public Epic(String type, String title, String description, Integer id, Status status) {
-        super(type, title, description, id, status);
+    
+    public Epic(String title, String description, Integer id, Status status) {
+        super(title, description, id, status);
     }
     
     public Epic(String name, String description, Integer id) {
@@ -21,6 +26,25 @@ public class Epic extends Task {
     }
     
     public void setSubTasks(ArrayList<SubTask> subTasks) {
-         subTasks = new ArrayList<SubTask>();
+        this.subTasks = subTasks;
+    }
+    public String getType () {
+        return type;
+    }
+    
+    public LocalDateTime getEndTime() {
+        for (SubTask subTask:subTasks) {
+            endTime.plusMinutes(subTask.getDuration());
+        }
+        return endTime;
+    }
+    
+    @Override
+    public String toString() {
+        return type +
+         ", " + name +
+         ", " + description +
+         ", " + id +
+         ", " + status;
     }
 }
