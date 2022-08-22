@@ -1,7 +1,9 @@
-TASK, TaskName, TaskDescript, 1, NEW
-SUBTASK, SubTaskName, SubTaskDescript, 1, NEW, 1
-SUBTASK, SubTaskName, SubTaskDescript, 2, NEW, 1
-SUBTASK, SubTaskName, SubTaskDescript, 3, NEW, 1
-EPIC, EpicName, EpicDescript, 1, NEW
+TASK, task 1, desc task 1, 1, NEW
+TASK, task 2, desc task 2, 2, NEW
+SUBTASK, subTask 1, desc subTask 1, 1, NEW, 1
+SUBTASK, subTask 2, desc subTask 2, 2, NEW, 1
+SUBTASK, subTask 3, desc subTask 3, 3, NEW, 1
+EPIC, Тест epic, Описание epic, 1, NEW
+EPIC, epic 2, desc epic 2, 2, NEW
 
-1, 1, 2, 3, 1
+1, 2, 1, 2, 3, 1, 2

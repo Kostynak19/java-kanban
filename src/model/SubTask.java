@@ -7,7 +7,6 @@ import java.util.Objects;
 
 // Класс SubTask описывает сущность задачи типа "подзадача"
 public class SubTask extends Task {
-    private final String type = TaskTypes.SUBTASK.toString();
     private Integer epicID;
     
     public SubTask(String name, String description, Integer id, Status status, Integer epicId) {
@@ -23,6 +22,7 @@ public class SubTask extends Task {
     public Integer getEpicId () {
         return epicID;
     }
+    
     
     public void setEpicID(Integer epicID) {
         this.epicID = epicID;
@@ -44,7 +44,7 @@ public class SubTask extends Task {
     
     @Override
     public String toString() {
-        return          type +
+        return  TaskTypes.SUBTASK.toString() +
          ", " + name +
          ", " + description +
          ", " + id +

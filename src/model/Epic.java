@@ -9,7 +9,6 @@ import java.util.ArrayList;
 // Класс Epic описывает сущность задачи типа "эпик"
 public class Epic extends Task {
   
-    private final String type = TaskTypes.EPIC.toString();
     ArrayList<SubTask> subTasks = new ArrayList<>();
     
     
@@ -21,6 +20,11 @@ public class Epic extends Task {
         super(name, description, id);
     }
     
+    public Epic(String name, String description) {
+        super(name, description, Status.NEW.ordinal());
+        this.subTasks = new ArrayList<>();
+    }
+    
     public ArrayList<SubTask> getSubTasks() {
         return subTasks;
     }
@@ -29,7 +33,7 @@ public class Epic extends Task {
         this.subTasks = subTasks;
     }
     public String getType () {
-        return type;
+        return TaskTypes.EPIC.toString();
     }
     
     public LocalDateTime getEndTime() {
@@ -41,7 +45,7 @@ public class Epic extends Task {
     
     @Override
     public String toString() {
-        return type +
+        return TaskTypes.EPIC.toString() +
          ", " + name +
          ", " + description +
          ", " + id +

@@ -17,7 +17,7 @@ public class Task {
     protected LocalDateTime startTime;
     protected Integer duration;
     protected LocalDateTime endTime;
-    private final String type = TaskTypes.TASK.toString();
+    private  String type = TaskTypes.TASK.toString();
     
     public Task (String name, String description, Integer id, Status status,
                  LocalDateTime startTime, Integer duration) {
@@ -30,9 +30,9 @@ public class Task {
         this.endTime = startTime.plusMinutes(duration);
     }
     
-    public Task () {
-        this("Задача", null, -1, NEW);
-    }
+//    public Task (String name, String description, Status status) {
+//        this("Задача", "Описание", -1, NEW);
+//    }
     
     public Task (String name, String description, Integer id) {
         this.name = name;
@@ -77,6 +77,9 @@ public class Task {
     
     public void setDescription (String description) {
         this.description = description;
+    }
+    public Integer setId (int id) {
+        return id;
     }
     
     public Integer getId () {

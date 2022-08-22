@@ -20,7 +20,7 @@ public class InMemoryTaskManager implements TaskManager {
     protected static final HashMap<Integer, Task> tasks = new HashMap<>();
     private Integer counterIDTasks = 0;
     
-    private static Set<Task> prioritizedTasks =
+    private static final Set<Task> prioritizedTasks =
      new TreeSet<>(Comparator.<Task, LocalDateTime>comparing(
        t -> t.getStartTime(),
        Comparator.nullsLast(Comparator.naturalOrder())
